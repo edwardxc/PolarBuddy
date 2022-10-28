@@ -43,7 +43,7 @@ public class EmailSender {
 	public static void main(String args[]) throws MessagingException {
 
 		EmailSender emailSender = new EmailSender();
-		emailSender.init(2);
+		emailSender.init(1);
 		setEmailSubject();
 		setEmailBody();
 		emailSender.sendEmail(EmailSubject, EmailBody);
