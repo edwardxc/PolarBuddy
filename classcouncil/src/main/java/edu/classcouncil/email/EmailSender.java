@@ -44,6 +44,8 @@ public class EmailSender {
 
 	public static void main(String args[]) throws MessagingException {
 		EmailSender emailSender = new EmailSender();
+		// Option 1: using Bowdoin email
+		// Option 2: using personal outlook email
 		emailSender.init(2);
 		setEmailSubject();
 		setEmailBody();
@@ -95,7 +97,7 @@ public class EmailSender {
 	}
 
 	public static void setEmailBody() {
-		EmailBody = "Hello World";
+		EmailBody = "This is a body";
 
 	}
 

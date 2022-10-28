@@ -14,7 +14,7 @@ public class createStudentListTest {
 		createStudentList createNewStudentList = new createStudentList();
 		
 		
-		createNewStudentList.readExcel("Track.xlsx");
+		createNewStudentList.readExcel("/Users/edwardxc/git/buddySystem/Track.xlsx");
 		
 		Student newStudent = new Student(1,"Cheng Xing","cxing@bowdoin.edu");
 		
