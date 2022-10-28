@@ -12,9 +12,11 @@ task name | difficulty | dependencies | owner | due date | status <br />
 
 2. Implement Student class  | 1 | no dependencies | Cheng | Oct 28 | done <br />
 
-3. Implement createStudentList class  | 3 | Task 2 is complete | Cheng | Nov 1 | in progress <br />
+3. Implement createStudentList class  | 3 | Task 2 is complete | Cheng | Nov 1 | done <br />
 
-4. Implement ShuffleList class  | 3 | Task 3 is complete | Cheng | Nov 2 | new <br />
+4. Implement exportStudentList class  | 3 | Task 2 is complete | Cheng | Nov 1 | in progress <br />
 
-5. Implement RandomPair class  | 8 | Task 4 is complete | Cheng | Nov 4 | new <br />
+5. Implement ShuffleList class  | 5 | Task 3 is complete | Cheng | Nov 2 | new <br />
+
+6. Implement RandomPair class  | 8 | Task 4 is complete | Cheng | Nov 4 | new <br />
 

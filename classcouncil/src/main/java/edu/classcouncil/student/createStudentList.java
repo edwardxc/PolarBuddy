@@ -18,21 +18,24 @@ public class createStudentList {
 
 	}
 
+	public StudentList getStudentList() {
+		return studentList;
+	}
+
 	public void readExcel(String filePath) {
 		int Id = 0;
 		String name = "";
 		String email = "";
 
 		try {
-			File file = new File(filePath); // creating a new file instance
-			FileInputStream fis = new FileInputStream(file); // obtaining bytes from the file
-			// creating Workbook instance that refers to .xlsx file
+			File file = new File(filePath);
+			FileInputStream fis = new FileInputStream(file);
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
-			XSSFSheet sheet = wb.getSheetAt(0); // creating a Sheet object to retrieve object
-			Iterator<Row> itr = sheet.iterator(); // iterating over excel file
+			XSSFSheet sheet = wb.getSheetAt(0);
+			Iterator<Row> itr = sheet.iterator();
 			while (itr.hasNext()) {
 				Row row = itr.next();
-				Iterator<Cell> cellIterator = row.cellIterator(); // iterating over each column
+				Iterator<Cell> cellIterator = row.cellIterator();
 				while (cellIterator.hasNext()) {
 					Cell cell = cellIterator.next();
 					Id = (int) cell.getNumericCellValue();
@@ -49,7 +52,7 @@ public class createStudentList {
 			throw new IllegalArgumentException("Error when creating student list");
 		}
 
-		System.out.println(studentList.getSize());
+		// System.out.println(studentList.getSize());
 
 	}
 
