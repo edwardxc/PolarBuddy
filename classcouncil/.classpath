@@ -18,6 +18,15 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/edwardxc/git/buddySystem/External Jars/commons-collections4-4.1.jar"/>
+	<classpathentry kind="lib" path="/Users/edwardxc/git/buddySystem/External Jars/poi-3.17.jar"/>
+	<classpathentry kind="lib" path="/Users/edwardxc/git/buddySystem/External Jars/poi-ooxml-3.17.jar"/>
+	<classpathentry kind="lib" path="/Users/edwardxc/git/buddySystem/External Jars/poi-ooxml-schemas-3.17.jar"/>
+	<classpathentry kind="lib" path="/Users/edwardxc/git/buddySystem/External Jars/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

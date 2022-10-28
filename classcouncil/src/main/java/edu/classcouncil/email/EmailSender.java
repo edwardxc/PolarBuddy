@@ -14,6 +14,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import edu.classcouncil.student.createStudentList;
+
 /**
  * 
  * @author Cheng Xing
@@ -41,12 +43,15 @@ public class EmailSender {
 	String personalPassword;
 
 	public static void main(String args[]) throws MessagingException {
-
 		EmailSender emailSender = new EmailSender();
-		emailSender.init(1);
+		emailSender.init(2);
 		setEmailSubject();
 		setEmailBody();
 		emailSender.sendEmail(EmailSubject, EmailBody);
+		
+		
+		//createStudentList createNewStudentList = new createStudentList();
+		//createNewStudentList.readExcel("/Users/edwardxc/git/buddySystem/Track.xlsx");
 	}
 
 	public void init(int option) {
@@ -119,7 +124,7 @@ public class EmailSender {
 			mimeMessage.setText(EmailBody);
 
 			Transport.send(mimeMessage);
-			System.out.println("Email Sent from" + username);
+			System.out.println("Email Sent from " + username);
 
 		} catch (Exception e) {
 			e.printStackTrace();
