@@ -18,8 +18,8 @@ public class StudentList {
 		
 	}
 	
-	public void addStudent(int id, String name, String email) {
-		Student newStudent = new Student(id, name, email);
+	public void addStudent(int id, String name, String email,String pairedStudentsString) {
+		Student newStudent = new Student(id, name, email,pairedStudentsString);
 		studentList.add(newStudent);
 	}
 	

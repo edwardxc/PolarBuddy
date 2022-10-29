@@ -8,13 +8,15 @@ public class Student {
 	String name;
 	String email;
 	int id;
-	List<Integer> pairedStudents;
+	String pairedStudentsString;
+	String[] pairedStudents;
 
-	public Student(int id, String name, String email) {
+	public Student(int id, String name, String email, String pairedStudentsString) {
 		setId(id);
 		setName(name);
 		setEmail(email);
-		initList();
+		setPairedStudentsString(pairedStudentsString);
+		setPairedStudents();
 
 	}
 
@@ -41,12 +43,19 @@ public class Student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public void initList() {
-		pairedStudents = new ArrayList<Integer>();
+	
+	public void setPairedStudentsString(String pairedStudentsString) {
+		this.pairedStudentsString = pairedStudentsString;
 	}
 
-	public List<Integer> getPairedStudents() {
+	public void setPairedStudents() {
+		String temp=pairedStudentsString.substring(1);
+	    String[] pairedStudentsIds=temp.split("-");
+	    System.out.println(pairedStudentsIds.length);
+	    
+	}
+
+	public String[] getPairedStudents() {
 		return pairedStudents;
 	}
 
