@@ -1,7 +1,5 @@
 package edu.classcouncil.student;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Student {
 
@@ -9,7 +7,8 @@ public class Student {
 	String email;
 	int id;
 	String pairedStudentsString;
-	String[] pairedStudents;
+	String[] pairedStudentsIds;
+	
 
 	public Student(int id, String name, String email, String pairedStudentsString) {
 		setId(id);
@@ -50,13 +49,13 @@ public class Student {
 
 	public void setPairedStudents() {
 		String temp=pairedStudentsString.substring(1);
-	    String[] pairedStudentsIds=temp.split("-");
-	    System.out.println(pairedStudentsIds.length);
+	    pairedStudentsIds=temp.split("-");
+	    //System.out.println(pairedStudentsIds.length);
 	    
 	}
 
 	public String[] getPairedStudents() {
-		return pairedStudents;
+		return pairedStudentsIds;
 	}
 
 }

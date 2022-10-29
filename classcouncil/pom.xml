@@ -50,25 +50,6 @@
 
 		</dependency>
 
-		<dependency>
-
-			<groupId>org.bouncycastle</groupId>
-
-			<artifactId>bcprov-jdk15on</artifactId>
-
-			<version>1.60</version>
-
-		</dependency>
-
-		<dependency>
-
-			<groupId>org.bouncycastle</groupId>
-
-			<artifactId>bcpkix-jdk15on</artifactId>
-
-			<version>1.60</version>
-
-		</dependency>
 
 		<dependency>
 			<groupId>com.github.ozlerhakan</groupId>
@@ -88,6 +69,13 @@
 			<artifactId>junit-jupiter-params</artifactId>
 			<version>5.8.2</version>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<!-- Include the sdk as a dependency -->
+			<groupId>com.microsoft.graph</groupId>
+			<artifactId>microsoft-graph</artifactId>
+			<version>5.39.0</version>
 		</dependency>
 
 	</dependencies>

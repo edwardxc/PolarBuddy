@@ -14,7 +14,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import edu.classcouncil.student.createStudentList;
 
 /**
  * 
@@ -28,8 +27,8 @@ public class EmailSender {
 
 	String username;
 	String password;
-	String HOSTNAME;
-	String STARTTLS_PORT;
+	final String HOSTNAME = "smtp.office365.com";
+	final String STARTTLS_PORT = "587";
 	boolean STARTTLS = true;
 	boolean AUTH = true;
 	String fromAddress;
@@ -50,10 +49,7 @@ public class EmailSender {
 		setEmailSubject();
 		setEmailBody();
 		emailSender.sendEmail(EmailSubject, EmailBody);
-		
-		
-		//createStudentList createNewStudentList = new createStudentList();
-		//createNewStudentList.readExcel("/Users/edwardxc/git/buddySystem/Track.xlsx");
+
 	}
 
 	public void init(int option) {
@@ -85,9 +81,6 @@ public class EmailSender {
 		}
 
 		fromAddress = username;
-
-		HOSTNAME = "smtp.office365.com";
-		STARTTLS_PORT = "587";
 
 	}
 
