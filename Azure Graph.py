@@ -35,7 +35,7 @@ result = app.acquire_token_silent(scopes, account=None)
 if not result:
     print(
         "No suitable token exists in cache. Let's get a new one from Azure Active Directory.")
-    # result = app.acquire_token_by_username_password("cxing@bowdoin.edu","1Edwardxc123",scopes)
+    # result = app.acquire_token_by_username_password(df.iloc[3].iloc[0],df.iloc[4].iloc[0],scopes)
     result = app.acquire_token_for_client(scopes=scopes)
 
 # if "access_token" in result:
