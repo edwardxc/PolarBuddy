@@ -17,9 +17,9 @@ public class studentUtils {
 
 	// List<Student> studentList = new ArrayList<Student>();
 
-	public static List<Student> readExcel(String filePath) {
-		List<Student> studentList = new ArrayList<Student>();
-		int Id = 0;
+	public static ArrayList<Student> readExcel(String filePath) {
+		ArrayList<Student> studentList = new ArrayList<Student>();
+		String Id = "";
 		String name = "";
 		String email = "";
 		String pairOfTheWeek = "";
@@ -38,7 +38,7 @@ public class studentUtils {
 				Iterator<Cell> cellIterator = row.cellIterator();
 				while (cellIterator.hasNext()) {
 					Cell cell = cellIterator.next();
-					Id = (int) cell.getNumericCellValue();
+					Id = cell.getStringCellValue();
 					cell = cellIterator.next();
 					name = cell.getStringCellValue();
 					cell = cellIterator.next();
@@ -60,7 +60,7 @@ public class studentUtils {
 
 	}
 
-	public static void writeExcel(List<Student> studentList, String filePath) throws Exception {
+	public static void writeExcel(ArrayList<Student> studentList, String filePath) throws Exception {
 		String[] temp = new String[5];
 		
 		try {
@@ -70,7 +70,6 @@ public class studentUtils {
 
 			int rowid = 0;
 			for (Student student : studentList) {
-				System.out.println(student.getName());
 				temp = student.toStringArray();
 				row = spreadsheet.createRow(rowid++);
 				for (int i = 0; i < temp.length; i++) {

@@ -4,12 +4,12 @@ public class Student {
 
 	String name;
 	String email;
-	int id;
+	String id; // String of 3 digits
 	String pairedStudentsString;
-	String pairOfTheWeek;
+	String pairOfTheWeek; //String of ID number (3 digits)
 	String[] pairedStudentsIds;
 
-	public Student(int id, String name, String email, String pairOfTheWeek,String pairedStudentsString) {
+	public Student(String id, String name, String email, String pairOfTheWeek,String pairedStudentsString) {
 		setId(id);
 		setName(name);
 		setEmail(email);
@@ -27,11 +27,11 @@ public class Student {
 		this.pairOfTheWeek = pairOfTheWeek;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -73,14 +73,18 @@ public class Student {
 			temp += pairedStudentsIds[i] + " ";
 		}
 		return id + " " + name + " " + email + " " + temp;
-
 	}
 	
 	public String[] toStringArray() {
-		String[] temp=new String[] {Integer.toString(id), name, email,pairOfTheWeek,pairedStudentsString};
-		
+		String[] temp=new String[] {id, name, email,pairOfTheWeek,pairedStudentsString};
 		return temp;
-		
 	}
+	
+	public void updatePair(String newPairOfTheWeek) {
+		pairedStudentsString = pairedStudentsString+"-"+pairOfTheWeek;
+		pairOfTheWeek = newPairOfTheWeek;
+	}
+	
+	
 
 }
