@@ -1,22 +1,30 @@
 package edu.classcouncil.student;
 
-
 public class Student {
 
 	String name;
 	String email;
 	int id;
 	String pairedStudentsString;
+	String pairOfTheWeek;
 	String[] pairedStudentsIds;
-	
 
-	public Student(int id, String name, String email, String pairedStudentsString) {
+	public Student(int id, String name, String email, String pairOfTheWeek,String pairedStudentsString) {
 		setId(id);
 		setName(name);
 		setEmail(email);
+		setPairOfTheWeek( pairOfTheWeek);
 		setPairedStudentsString(pairedStudentsString);
 		setPairedStudents();
 
+	}
+
+	public String getPairOfTheWeek() {
+		return pairOfTheWeek;
+	}
+
+	public void setPairOfTheWeek(String pairOfTheWeek) {
+		this.pairOfTheWeek = pairOfTheWeek;
 	}
 
 	public int getId() {
@@ -42,20 +50,37 @@ public class Student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public void setPairedStudentsString(String pairedStudentsString) {
 		this.pairedStudentsString = pairedStudentsString;
 	}
 
 	public void setPairedStudents() {
-		String temp=pairedStudentsString.substring(1);
-	    pairedStudentsIds=temp.split("-");
-	    //System.out.println(pairedStudentsIds.length);
-	    
+		String temp = pairedStudentsString.substring(1);
+		pairedStudentsIds = temp.split("-");
+		// System.out.println(pairedStudentsIds.length);
+
 	}
 
 	public String[] getPairedStudents() {
 		return pairedStudentsIds;
+	}
+
+	public String toString() {
+		String temp = "";
+
+		for (int i = 0; i < pairedStudentsIds.length; i++) {
+			temp += pairedStudentsIds[i] + " ";
+		}
+		return id + " " + name + " " + email + " " + temp;
+
+	}
+	
+	public String[] toStringArray() {
+		String[] temp=new String[] {Integer.toString(id), name, email,pairOfTheWeek,pairedStudentsString};
+		
+		return temp;
+		
 	}
 
 }

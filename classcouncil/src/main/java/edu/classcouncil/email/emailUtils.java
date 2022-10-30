@@ -20,7 +20,7 @@ import javax.mail.internet.MimeMessage;
  * @author Cheng Xing
  *
  */
-public class EmailSender {
+public class emailUtils {
 	Properties properties;
 	Session session;
 	MimeMessage mimeMessage;
@@ -42,7 +42,7 @@ public class EmailSender {
 	String personalPassword;
 
 	public static void main(String args[]) throws MessagingException {
-		EmailSender emailSender = new EmailSender();
+		emailUtils emailSender = new emailUtils();
 		// Option 1: using Bowdoin email
 		// Option 2: using personal outlook email
 		emailSender.init(2);
