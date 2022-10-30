@@ -44,7 +44,7 @@ public class emailUtils {
 		emailUtils emailSender = new emailUtils();
 		// Option 1: using Bowdoin email
 		// Option 2: using personal outlook email
-		emailSender.init(2);
+		emailSender.init(1);
 		setEmailSubject();
 		setEmailBody();
 		emailSender.sendEmail(EmailSubject, EmailBody);

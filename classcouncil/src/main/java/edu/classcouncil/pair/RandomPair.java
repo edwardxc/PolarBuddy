@@ -14,11 +14,8 @@ public class RandomPair {
 	}
 
 	public ArrayList<Student> createPairs(ArrayList<Student> studentLists) {
-		ArrayList<Student> newStudentList = new ArrayList<Student>();
-		
-		for(int i =0;i<studentLists.size();i++) {
-			newStudentList.add(studentLists.get(i));
-		}
+		ArrayList<Student> newStudentList = new ArrayList<Student>(studentLists);
+	
 		
 		
 		boolean removeCheng = false;
@@ -35,7 +32,7 @@ public class RandomPair {
 		}
 		
 		
-		Collections.shuffle(studentLists);
+		Collections.shuffle(newStudentList);
 		if(removeCheng) {
 			newStudentList.add(temp);
 		}
