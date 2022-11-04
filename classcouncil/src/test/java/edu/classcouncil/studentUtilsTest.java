@@ -19,9 +19,10 @@ public class studentUtilsTest {
 		studentList=studentUtils.readExcel("/Users/edwardxc/git/Emails/Track.xlsx");
 		//studentUtils.readExcel("/Users/edwardxc/git/Emails/Track.xlsx");
 		 RandomPair randomPair= new RandomPair();
-		randomPair.createPairs(studentList);
+		 ArrayList<Student> newStudentList = randomPair.shuffleList(studentList);
+
 		try {
-			studentUtils.writeExcel(studentList, "/Users/edwardxc/git/Emails/Track.xlsx");
+			studentUtils.writeExcel(newStudentList, "/Users/edwardxc/git/Emails/Track.xlsx");
 		} catch(Exception e) {
 			System.out.println("failed writing list");
 		}

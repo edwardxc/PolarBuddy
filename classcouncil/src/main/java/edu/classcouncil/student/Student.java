@@ -1,19 +1,23 @@
 package edu.classcouncil.student;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Student {
 
 	String name;
 	String email;
 	String id; // String of 3 digits
 	String pairedStudentsString;
-	String pairOfTheWeek; //String of ID number (3 digits)
+	String pairOfTheWeek; // String of ID number (3 digits)
 	String[] pairedStudentsIds;
 
-	public Student(String id, String name, String email, String pairOfTheWeek,String pairedStudentsString) {
+	public Student(String id, String name, String email, String pairOfTheWeek, String pairedStudentsString) {
 		setId(id);
 		setName(name);
 		setEmail(email);
-		setPairOfTheWeek( pairOfTheWeek);
+		setPairOfTheWeek(pairOfTheWeek);
 		setPairedStudentsString(pairedStudentsString);
 		setPairedStudents();
 
@@ -74,17 +78,26 @@ public class Student {
 		}
 		return id + " " + name + " " + email + " " + temp;
 	}
-	
+
 	public String[] toStringArray() {
-		String[] temp=new String[] {id, name, email,pairOfTheWeek,pairedStudentsString};
+		String[] temp = new String[] { id, name, email, pairOfTheWeek, pairedStudentsString };
 		return temp;
 	}
-	
-	public void updatePair(String newPairOfTheWeek) {
-		pairedStudentsString = pairedStudentsString+"-"+pairOfTheWeek;
+
+	public void updateNewPair(String newPairOfTheWeek) {
 		pairOfTheWeek = newPairOfTheWeek;
 	}
-	
-	
+
+	public void updatePairedStudents() {
+		pairedStudentsString = pairedStudentsString + "-" + pairOfTheWeek;
+		int len = pairedStudentsIds.length;
+		String arr[] = new String[len + 1];
+		for (int i = 0; i < len; i++) {
+			arr[i] = pairedStudentsIds[i];
+		}
+		arr[len] = pairOfTheWeek;
+		pairedStudentsIds = arr;
+
+	}
 
 }
