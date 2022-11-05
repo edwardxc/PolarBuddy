@@ -15,14 +15,14 @@ public class studentUtilsTest {
 	@Test
 	public void commandConstructorTest() {
 		ArrayList<Student> studentList = new ArrayList<Student>();
-
-		studentList=studentUtils.readExcel("/Users/edwardxc/git/Emails/Track.xlsx");
+		String str="Track.xlsx";
+		studentList=studentUtils.readExcel("/Users/edwardxc/git/Emails/"+str);
 		//studentUtils.readExcel("/Users/edwardxc/git/Emails/Track.xlsx");
 		 RandomPair randomPair= new RandomPair();
 		 ArrayList<Student> newStudentList = randomPair.shuffleList(studentList);
 
 		try {
-			studentUtils.writeExcel(newStudentList, "/Users/edwardxc/git/Emails/Track.xlsx");
+			studentUtils.writeExcel(newStudentList, "/Users/edwardxc/git/Emails/"+str);
 		} catch(Exception e) {
 			System.out.println("failed writing list");
 		}
