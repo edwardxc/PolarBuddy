@@ -81,9 +81,8 @@ public class RandomPair {
 			returnStudentList.add(temp2);
 			counter += 2;
 		}
-		
+
 		return returnStudentList;
 	}
-
 
 }

@@ -23,27 +23,20 @@ public class studentUtilsTest {
 
 	}
 	/*
-	@Test
-	public void randomPairTest() {
-		ArrayList<Student> studentList = new ArrayList<Student>();
-		String str = "Track.xlsx";
-		studentList = studentUtils.readExcel("/Users/edwardxc/git/Emails/" + str);
-		RandomPair randomPair = new RandomPair();
-		ArrayList<Student> newStudentList = randomPair.shuffleList(studentList);
-		try {
-			studentUtils.writeExcel(newStudentList, "/Users/edwardxc/git/Emails/" + str);
-		} catch (Exception e) {
-			System.out.println("failed writing list");
-		}
-	}
-	*/
-	
-	
+	 * @Test public void randomPairTest() { ArrayList<Student> studentList = new
+	 * ArrayList<Student>(); String str = "Track.xlsx"; studentList =
+	 * studentUtils.readExcel("/Users/edwardxc/git/Emails/" + str); RandomPair
+	 * randomPair = new RandomPair(); ArrayList<Student> newStudentList =
+	 * randomPair.shuffleList(studentList); try {
+	 * studentUtils.writeExcel(newStudentList, "/Users/edwardxc/git/Emails/" + str);
+	 * } catch (Exception e) { System.out.println("failed writing list"); } }
+	 */
+
 	@Test
 	public void emailSenderTest() {
 		ArrayList<Student> studentList = new ArrayList<Student>();
-		//String str = "SeniorClass.xlsx";
-		String str = "ClassCouncils.xlsx";
+		// String str = "SeniorClass.xlsx";
+		String str = "ClassCouncil.xlsx";
 		studentList = studentUtils.readExcel("/Users/edwardxc/git/Emails/" + str);
 		RandomPair randomPair = new RandomPair();
 		ArrayList<Student> newStudentList = randomPair.shuffleList(studentList);
@@ -52,12 +45,14 @@ public class studentUtilsTest {
 		} catch (Exception e) {
 			System.out.println("failed writing list");
 		}
-		
-		
+
 		emailUtils emailSender = new emailUtils();
-		emailSender.send(studentList);
-		
+		try {
+			emailSender.send(studentList);
+		} catch (Exception e) {
+			System.out.println("failed sending email");
+		}
+
 	}
-	
-	
+
 }

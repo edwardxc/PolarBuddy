@@ -14,6 +14,8 @@ task name | difficulty | dependencies | owner | due date | status <br />
 
 3. Implement StudentUtil class  | 3 | Task 2 is complete | Cheng | Nov 1 | done <br />
 
-4. Implement RandomPair class  | 3 | Task 3 is complete | Cheng | Nov 3 | in progress <br />
+4. Implement RandomPair class  | 3 | Task 3 is complete | Cheng | Nov 3 | done <br />
+
+5. Test on Class Council emails |2 | Task 4 is complete | Cheng | Nov 6 | done <br />
 
 

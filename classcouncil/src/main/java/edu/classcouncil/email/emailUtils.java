@@ -12,6 +12,7 @@ import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
@@ -58,7 +59,11 @@ public class emailUtils {
 	}
 
 	public void send(ArrayList<Student> StudentList) {
-		init(2);
+		try {
+			init(2);
+		} catch (MessagingException e) {
+			throw new IllegalArgumentException("Fail to init email util");
+		}
 		for (int i = 0; i < StudentList.size(); i++) {
 			Student student = StudentList.get(i);
 			String pairOfTheWeekId = student.getPairOfTheWeek();
@@ -69,16 +74,17 @@ public class emailUtils {
 				}
 			}
 
-			String emailSubject = "Polar Buddy of the week2";
-			String emailBody = "Hi " + student.getName() + "\nYour buddy is" + pairOfTheWeek;
+			// String emailSubject = "Polar Buddy of the week2";
+			String emailSubject = "Hello " + i;
+			String emailBody = "Hi" + student.getName() + "\nYour buddy is" + pairOfTheWeek;
 			emailBody += "\nThe tasks of the week are: 1 2 ";
 
-			sendEmail(student.getEmail(), emailSubject, emailBody);
+			sendEmail("edxingc@gmail.com", emailSubject, emailBody);
 			// System.out.println(student.getName() + emailBody);
 		}
 	}
 
-	public void init(int option) {
+	public void init(int option) throws AddressException, MessagingException {
 
 		BufferedReader reader;
 		try {
@@ -108,6 +114,24 @@ public class emailUtils {
 
 		fromAddress = username;
 
+		properties = new Properties();
+		properties.put("mail.smtp.host", HOSTNAME);
+		properties.put("mail.smtp.port", STARTTLS_PORT);
+		properties.put("mail.smtp.auth", AUTH);
+		properties.put("mail.smtp.starttls.enable", STARTTLS);
+		properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+		Authenticator auth = new Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		};
+
+		session = Session.getInstance(properties, auth);
+
+		mimeMessage = new MimeMessage(session);
+
+		mimeMessage.setFrom(new InternetAddress(username));
+
 	}
 
 	public String setEmailSubject() {
@@ -124,23 +148,7 @@ public class emailUtils {
 
 	public void sendEmail(String toAddress, String EmailSubject, String EmailBody) {
 		try {
-			properties = new Properties();
-			properties.put("mail.smtp.host", HOSTNAME);
-			properties.put("mail.smtp.port", STARTTLS_PORT);
-			properties.put("mail.smtp.auth", AUTH);
-			properties.put("mail.smtp.starttls.enable", STARTTLS);
-			properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
-			Authenticator auth = new Authenticator() {
-				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication(username, password);
-				}
-			};
 
-			session = Session.getInstance(properties, auth);
-
-			mimeMessage = new MimeMessage(session);
-
-			mimeMessage.setFrom(new InternetAddress(username));
 			mimeMessage.addRecipient(RecipientType.TO, new InternetAddress(toAddress));
 			mimeMessage.setSubject(EmailSubject);
 
@@ -150,7 +158,7 @@ public class emailUtils {
 			System.out.println("Email Sent from " + username);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new IllegalArgumentException("Fail to send email");
 		}
 	}
 
