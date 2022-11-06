@@ -62,7 +62,7 @@ public class studentUtils {
 
 	public static void writeExcel(ArrayList<Student> studentList, String filePath) throws Exception {
 		String[] temp = new String[5];
-		
+
 		try {
 			XSSFWorkbook workbook = new XSSFWorkbook();
 			XSSFSheet spreadsheet = workbook.createSheet(" Student Data ");
@@ -77,7 +77,7 @@ public class studentUtils {
 					cell.setCellValue(temp[i]);
 				}
 			}
-			
+
 			FileOutputStream out = new FileOutputStream(
 					new File(filePath.substring(0, filePath.length() - 5) + "s.xlsx"));
 			workbook.write(out);
@@ -86,6 +86,6 @@ public class studentUtils {
 		} catch (Exception e) {
 			throw new IllegalArgumentException("Error when exporting student list");
 		}
-		
+
 	}
 }

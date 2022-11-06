@@ -10,8 +10,6 @@ import edu.classcouncil.student.Student;
 
 public class RandomPair {
 
-	// ArrayList<Student> studentList = new ArrayList<Student>();
-
 	public RandomPair() {
 
 	}
@@ -22,9 +20,10 @@ public class RandomPair {
 		boolean removeCheng = false;
 		Student temp = newStudentList.get(0);
 		if (studentLists.size() % 2 == 1) {
+			System.out.println("odd");
 
 			for (int i = 0; i < newStudentList.size(); i++) {
-				if ("Cheng Xing".equals(newStudentList.get(i).getName())) {
+				if (" Cheng Xing ".equals(newStudentList.get(i).getName())) {
 					temp = newStudentList.remove(i);
 					System.out.println("removed Cheng");
 					System.out.println(newStudentList.size());
@@ -38,7 +37,7 @@ public class RandomPair {
 		boolean done = false;
 		while (!done) {
 			ArrayList<Student> tempStudentList = createPairs(newStudentList);
-			System.out.println(tempStudentList.size());
+			System.out.println("list is shuffled" + tempStudentList.size());
 			if (tempStudentList != null) {
 				done = true;
 				newStudentList = new ArrayList<Student>(tempStudentList);
@@ -48,7 +47,7 @@ public class RandomPair {
 		if (removeCheng) {
 			newStudentList.add(temp);
 		}
-
+		Collections.sort(newStudentList);
 		return newStudentList;
 	}
 
@@ -82,16 +81,8 @@ public class RandomPair {
 			returnStudentList.add(temp2);
 			counter += 2;
 		}
-		System.out.println("ok");
-		System.out.println(returnStudentList.size());
-		System.out.println(counter);
-		sortStudentList(returnStudentList);
+		
 		return returnStudentList;
-
-	}
-
-	public void sortStudentList(ArrayList<Student> studentLists) {
-		Collections.sort(studentLists);
 	}
 
 

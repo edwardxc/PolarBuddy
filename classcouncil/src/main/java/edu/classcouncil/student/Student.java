@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Student implements Comparable<Student>{
+public class Student implements Comparable<Student> {
 
 	String name;
 	String email;
@@ -89,9 +89,9 @@ public class Student implements Comparable<Student>{
 	}
 
 	public void updatePairedStudents() {
-		//System.out.println(pairedStudentsString);
+		// System.out.println(pairedStudentsString);
 		pairedStudentsString = pairedStudentsString + "-" + pairOfTheWeek;
-		//System.out.println(pairedStudentsString);
+		// System.out.println(pairedStudentsString);
 		int len = pairedStudentsIds.length;
 		String arr[] = new String[len + 1];
 		for (int i = 0; i < len; i++) {
@@ -101,15 +101,11 @@ public class Student implements Comparable<Student>{
 		pairedStudentsIds = arr;
 
 	}
-	
-	public int compareTo(Student comparestu) {
-        int compareage= Integer.parseInt(comparestu.getId());
-  
-        //  For Ascending order
-        return Integer.parseInt(this.getId()) - compareage;
-	
-	}
-	
-    
-}
 
+	public int compareTo(Student comparestu) {
+		int compareage = Integer.parseInt(comparestu.getId());
+		return Integer.parseInt(this.getId()) - compareage;
+
+	}
+
+}
