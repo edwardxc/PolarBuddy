@@ -79,7 +79,7 @@ public class studentUtils {
 			}
 
 			FileOutputStream out = new FileOutputStream(
-					new File(filePath.substring(0, filePath.length() - 5) + "s.xlsx"));
+					new File(filePath.substring(0, filePath.length() - 5) + "week1.xlsx"));
 			workbook.write(out);
 			out.close();
 			workbook.close();

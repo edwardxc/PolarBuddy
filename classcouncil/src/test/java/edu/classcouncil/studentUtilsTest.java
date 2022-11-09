@@ -48,7 +48,24 @@ public class studentUtilsTest {
 
 		emailUtils emailSender = new emailUtils();
 		try {
-			emailSender.send(studentList);
+			emailSender.send(studentList,8);
+		} catch (Exception e) {
+			System.out.println("failed sending email");
+		}
+
+	}
+	
+	@Test
+	public void emailSenderTest2() {
+		
+		System.out.println("test 2");
+		ArrayList<Student> studentList = new ArrayList<Student>();
+		String str = "ClassCouncilweek1.xlsx";
+		studentList = studentUtils.readExcel("/Users/edwardxc/git/Emails/" + str);
+
+		emailUtils emailSender = new emailUtils();
+		try {
+			emailSender.send(studentList,8);
 		} catch (Exception e) {
 			System.out.println("failed sending email");
 		}

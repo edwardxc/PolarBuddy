@@ -58,28 +58,40 @@ public class emailUtils {
 
 	}
 
-	public void send(ArrayList<Student> StudentList) {
+	public void send(ArrayList<Student> StudentList, int from) {
 		try {
 			init(2);
 		} catch (MessagingException e) {
 			throw new IllegalArgumentException("Fail to init email util");
 		}
-		for (int i = 0; i < StudentList.size(); i++) {
+		for (int i = from; i < StudentList.size(); i++) {
 			Student student = StudentList.get(i);
 			String pairOfTheWeekId = student.getPairOfTheWeek();
 			String pairOfTheWeek = "";
 			for (int j = 0; j < StudentList.size(); j++) {
 				if (pairOfTheWeekId.equals(StudentList.get(j).getId())) {
-					pairOfTheWeek = StudentList.get(j).getName();
+					pairOfTheWeek = StudentList.get(j).getName().trim();
 				}
 			}
 
 			// String emailSubject = "Polar Buddy of the week2";
-			String emailSubject = "Hello " + i;
-			String emailBody = "Hi" + student.getName() + "\nYour buddy is" + pairOfTheWeek;
-			emailBody += "\nThe tasks of the week are: 1 2 ";
+			String emailSubject = "Polar Buddy of week [TEST2]";
+			 String[] arr=(student.getName().trim()).split(" ");
 
-			sendEmail("edxingc@gmail.com", emailSubject, emailBody);
+			String emailBody = "Hey " + arr[0] + ",\nYour Polar buddy of the week is " + pairOfTheWeek;
+			emailBody += ".\n\nThe tasks of the week are:\n"
+					+ "Option 1: Ask a professor to take a BeReal of you and your Buddy (or selfie with)\n"
+					+ "Option 2: Ask a townie (unaffiliated with Bowdoin) to take a BeReal of you and your Buddy (or selfie with)\n";
+
+			emailBody += "\n\nRules:\n" + "1. Reach out to your new Buddy!\n"
+					+ "2. Complete the activity with your Bud! Your and your Buddy will receive $3 credit for completing Option 1, or $5 credit for Option 2. "
+					+ "These credits can be put towards class merch items and other prizes that are in the works!\n"
+					+ "3. Send a pic/vid of you and your buddy completing the activity to Class2023 Instagram (@Bowdoin2023) or email to cxing@bowdoin.edu\n";
+
+			emailBody += "\nBest,\nSenior Class Council"+ " \n\n\n\n" + "Opt-out link: https://forms.office.com/r/LQ0CHKwwRB";
+			
+			sendEmail(student.getEmail(), emailSubject, emailBody);
+			System.out.println(student.getName()+pairOfTheWeek);
 			// System.out.println(student.getName() + emailBody);
 		}
 	}
@@ -114,24 +126,6 @@ public class emailUtils {
 
 		fromAddress = username;
 
-		properties = new Properties();
-		properties.put("mail.smtp.host", HOSTNAME);
-		properties.put("mail.smtp.port", STARTTLS_PORT);
-		properties.put("mail.smtp.auth", AUTH);
-		properties.put("mail.smtp.starttls.enable", STARTTLS);
-		properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
-		Authenticator auth = new Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(username, password);
-			}
-		};
-
-		session = Session.getInstance(properties, auth);
-
-		mimeMessage = new MimeMessage(session);
-
-		mimeMessage.setFrom(new InternetAddress(username));
-
 	}
 
 	public String setEmailSubject() {
@@ -148,6 +142,25 @@ public class emailUtils {
 
 	public void sendEmail(String toAddress, String EmailSubject, String EmailBody) {
 		try {
+			/*
+
+			properties = new Properties();
+			properties.put("mail.smtp.host", HOSTNAME);
+			properties.put("mail.smtp.port", STARTTLS_PORT);
+			properties.put("mail.smtp.auth", AUTH);
+			properties.put("mail.smtp.starttls.enable", STARTTLS);
+			properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+			Authenticator auth = new Authenticator() {
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication(username, password);
+				}
+			};
+
+			session = Session.getInstance(properties, auth);
+
+			mimeMessage = new MimeMessage(session);
+
+			mimeMessage.setFrom(new InternetAddress(username));
 
 			mimeMessage.addRecipient(RecipientType.TO, new InternetAddress(toAddress));
 			mimeMessage.setSubject(EmailSubject);
@@ -155,10 +168,11 @@ public class emailUtils {
 			mimeMessage.setText(EmailBody);
 
 			Transport.send(mimeMessage);
-			System.out.println("Email Sent from " + username);
+			*/
+			System.out.println("Email Sent from " + username + " to "+ toAddress);
 
 		} catch (Exception e) {
-			throw new IllegalArgumentException("Fail to send email");
+			throw new IllegalArgumentException("Fail to send email to " + toAddress);
 		}
 	}
 
