@@ -79,13 +79,31 @@ public class studentUtils {
 			}
 
 			FileOutputStream out = new FileOutputStream(
-					new File(filePath.substring(0, filePath.length() - 5) + "week1.xlsx"));
+					new File(filePath.substring(0, filePath.length() - 5) + "week2.xlsx"));
 			workbook.write(out);
 			out.close();
 			workbook.close();
 		} catch (Exception e) {
 			throw new IllegalArgumentException("Error when exporting student list");
 		}
+
+	}
+	
+	public static ArrayList<Student> writeUnsortedFromSorted(ArrayList<Student> studentList) {
+		ArrayList<Student> unsortedStudentList = new ArrayList<Student>();
+		for(int i=0;i<studentList.size();i++) {
+			Student student1=studentList.get(i);
+			for(int j=i;j<studentList.size();j++) {
+				if(studentList.get(j).getId().equals(student1.getPairOfTheWeek())) {
+					unsortedStudentList.add(student1);
+					unsortedStudentList.add(studentList.get(j));
+					break;
+				}
+			}
+		}
+		return unsortedStudentList;
+		
+		
 
 	}
 }

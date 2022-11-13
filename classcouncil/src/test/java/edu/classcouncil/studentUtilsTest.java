@@ -3,6 +3,8 @@ package edu.classcouncil;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -31,12 +33,12 @@ public class studentUtilsTest {
 	 * studentUtils.writeExcel(newStudentList, "/Users/edwardxc/git/Emails/" + str);
 	 * } catch (Exception e) { System.out.println("failed writing list"); } }
 	 */
-
+	/*
 	@Test
 	public void emailSenderTest() {
 		ArrayList<Student> studentList = new ArrayList<Student>();
 		// String str = "SeniorClass.xlsx";
-		String str = "ClassCouncil.xlsx";
+		String str = "SeniorClass.xlsx";
 		studentList = studentUtils.readExcel("/Users/edwardxc/git/Emails/" + str);
 		RandomPair randomPair = new RandomPair();
 		ArrayList<Student> newStudentList = randomPair.shuffleList(studentList);
@@ -48,28 +50,79 @@ public class studentUtilsTest {
 
 		emailUtils emailSender = new emailUtils();
 		try {
-			emailSender.send(studentList,8);
+			emailSender.send(studentList,0);
 		} catch (Exception e) {
 			System.out.println("failed sending email");
 		}
 
 	}
+	*/
+	
 	
 	@Test
 	public void emailSenderTest2() {
 		
-		System.out.println("test 2");
+		//System.out.println("test 2");
 		ArrayList<Student> studentList = new ArrayList<Student>();
-		String str = "ClassCouncilweek1.xlsx";
+		String str = "SeniorClassweek1.xlsx";
+		//String str = "ClassCouncilweek1.xlsx";
+		
 		studentList = studentUtils.readExcel("/Users/edwardxc/git/Emails/" + str);
+		
+		RandomPair randomPair = new RandomPair();
+		ArrayList<Student> newStudentList = randomPair.shuffleList(studentList);
 
 		emailUtils emailSender = new emailUtils();
+		
+		ArrayList<Student> studentList2 = studentUtils.readExcel("/Users/edwardxc/git/Emails/" + "ClassCouncilweek1Unsortedweek2.xlsx");
 		try {
-			emailSender.send(studentList,8);
+			emailSender.sendTwoEmails(studentList2,0);
 		} catch (Exception e) {
 			System.out.println("failed sending email");
 		}
+		
+		try {
+			studentUtils.writeExcel(newStudentList, "/Users/edwardxc/git/Emails/" + str);
+		} catch (Exception e) {
+			System.out.println("failed writing list");
+		}
 
 	}
+	
+	
+	/*
+	@Test
+	public void sendPairEmailTest() {
+		
+		
+		emailUtils emailSender = new emailUtils();
+		try {
+			emailSender.sendPairEmail("cxing@bowdoin.edu", "edwardxc@126.com", "subject1", "body");
+		} catch (MessagingException e) {
+			System.out.println("failed sending email");
+		}
+		
+	
+	}
+	
+	*/
+	
+	@Test
+	public void convertSortedtoUnsorted() {
+		ArrayList<Student> studentList = new ArrayList<Student>();
+		String str = "ClassCouncilweek1.xlsx";
+		//String str = "ClassCouncilweek1.xlsx";
+		
+		studentList = studentUtils.readExcel("/Users/edwardxc/git/Emails/" + str);
+		try {
+			studentUtils.writeExcel(studentUtils.writeUnsortedFromSorted(studentList), "/Users/edwardxc/git/Emails/" + "ClassCouncilweek1Unsorted.xlsx");
+		} catch (Exception e) {
+			System.out.println("failed writing list");
+		}
+	
+	}
+	
+	
+	
 
 }

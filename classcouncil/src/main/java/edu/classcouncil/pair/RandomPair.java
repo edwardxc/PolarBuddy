@@ -7,6 +7,7 @@ import java.util.Collections;
 import com.nimbusds.jose.util.ArrayUtils;
 
 import edu.classcouncil.student.Student;
+import edu.classcouncil.student.studentUtils;
 
 public class RandomPair {
 
@@ -47,7 +48,19 @@ public class RandomPair {
 		if (removeCheng) {
 			newStudentList.add(temp);
 		}
+		
+		try {
+			studentUtils.writeExcel(newStudentList, "/Users/edwardxc/git/Emails/" + "X_unsorted.xlsx");
+		} catch (Exception e) {
+			System.out.println("failed writing list");
+		}
 		Collections.sort(newStudentList);
+		
+		try {
+			studentUtils.writeExcel(newStudentList, "/Users/edwardxc/git/Emails/" + "X_sorted.xlsx");
+		} catch (Exception e) {
+			System.out.println("failed writing list");
+		}
 		return newStudentList;
 	}
 
