@@ -114,24 +114,25 @@ public class emailUtils {
 			Student student2 = StudentList.get(i + 1);
 
 			// String emailSubject = "Polar Buddy of the week2";
-			String emailSubject = "Polar Buddy - week 1[TEST]";
+			String emailSubject = "Polar Buddy - week 2";
 			String[] name1 = (student1.getName().trim()).split(" ");
 			String[] name2 = (student2.getName().trim()).split(" ");
 
 			String emailBody = "Hey " + name1[0] + " and " + name2[0]
-					+ ",\nDon't forget that you guys are Polar Buddies!";
-			emailBody += ".\n\nThe tasks of the week are:\n"
-					+ "Option 1: Ask a professor/faculty/staff to take a BeReal of you and your Buddy (or selfie with)\n"
-					+ "Option 2: Ask a townie (unaffiliated with Bowdoin) to take a BeReal of you and your Buddy (or selfie with)\n";
+					+ ",\nYou guys are Polar Buddies!";
+			emailBody += "\n\nThe tasks of the week are:\n"
+					+ "Option 1: Bedroom Tour\n"
+					+ "Option 2: Outfit Swap or Twin\n";
 
 			emailBody += "\n\nRules:\n" + "1. Reach out to your new Buddy!\n"
 					+ "2. Complete the activity with your Bud by next Wednesday (Nov 16th)! Your and your Buddy will receive $3 credit for completing Option 1, or $5 credit for Option 2. "
-					+ "These credits can be put towards class merch items and other prizes that are in the works!\n"
+					+ "These credits can be put towards class merch items and other prizes (shuuu, Pub/C-Store/Cafe coupon) that are in the works!\n"
 					+ "3. Send a pic/vid of you and your buddy completing the activity to Class2023 Instagram (@Bowdoin2023), or to polarbuddy@outlook.com by replying this email.\n";
 
 			emailBody += "\nBest,\nSenior Class Council" + " \n\n\n\n"
 					+ "Opt-out link: https://forms.office.com/r/LQ0CHKwwRB";
 
+			//sendPairEmail(student1.getEmail(), student2.getEmail(), emailSubject, emailBody);
 			sendPairEmail(student1.getEmail(), student2.getEmail(), emailSubject, emailBody);
 			System.out.println(student1.getName() + student2.getName());
 			// System.out.println(student.getName() + emailBody);
@@ -218,7 +219,7 @@ public class emailUtils {
 
 	public void sendPairEmail(String toAddress1, String toAddress2, String EmailSubject, String EmailBody) {
 		try {
-
+			
 			properties = new Properties();
 			properties.put("mail.smtp.host", HOSTNAME);
 			properties.put("mail.smtp.port", STARTTLS_PORT);
@@ -244,6 +245,7 @@ public class emailUtils {
 			mimeMessage.setText(EmailBody);
 
 			Transport.send(mimeMessage);
+			
 			System.out.println("Email Sent from " + username + " to " + toAddress1 + " + " + toAddress2);
 
 		} catch (Exception e) {
